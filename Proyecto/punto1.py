@@ -65,7 +65,7 @@ class DisjointSetUnion:
 
 
 # Leer archivo
-nombre_archivo = 'P1test10'
+nombre_archivo = 'P1test2'
 
 entrada = open(file='{}.in'.format(nombre_archivo), mode="r", encoding='utf-8')
 
