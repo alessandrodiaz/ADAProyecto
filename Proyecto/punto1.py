@@ -52,7 +52,7 @@ class DisjointSetUnion:
 
         if query == "3":
             # Retorna True si ambos elementos pertenecen al mismo set
-            print(mi_set.find(a) == mi_set.find(b))
+            salida.write(str(mi_set.find(a) == mi_set.find(b)).lower()+"\n")
         elif query == "2":
             i = a
             # Unir departamentos entre A y B
@@ -65,8 +65,11 @@ class DisjointSetUnion:
 
 
 # Leer archivo
-f = open("P1test1.in", "r")
-primera_linea = f.readline()
+nombre_archivo = 'P1test10'
+
+entrada = open(file='{}.in'.format(nombre_archivo), mode="r", encoding='utf-8')
+
+primera_linea = entrada.readline()
 primera_linea = primera_linea.split(" ")
 
 num_departamentos = int(primera_linea[0])+1
@@ -74,7 +77,12 @@ num_queries = primera_linea[1]
 
 mi_set = DisjointSetUnion(num_departamentos)
 
-for x in f:
+salida = open(file='{}.out'.format(nombre_archivo), mode="a", encoding='utf-8')
+salida = open(file='{}.out'.format(nombre_archivo), mode="w", encoding='utf-8')
+
+
+for x in entrada:
     mi_set.leer_instrucciones(str(x).replace("\t", " "))
 
-f.close()
+entrada.close()
+salida.close()
