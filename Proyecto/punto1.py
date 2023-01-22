@@ -1,60 +1,48 @@
 # PUNTO 1
 
-class DisjSet:
+class DisjointSetUnion:
 
+    # Constructor para crear e inicializar sets de n items
     def __init__(self, n):
-        # Constructor to create and initialize sets of n items
+
         self.rank = [1] * n
         self.parent = [i for i in range(n)]
 
-    # Finds set of given item x
+    # Encuentra el set de un x dado
 
     def find(self, x):
 
-        # Finds the representative of the set that x is an element of
+        # Encuentra el representante del set al que x pertenece
         if (self.parent[x] != x):
 
-            # if x is not the parent of itself
-            # Then x is not the representative of
-            # its set,
+            # Si x no es el padre de él mismo, entonces x no es el representante de su set
             self.parent[x] = self.find(self.parent[x])
 
-            # so we recursively call Find on its parent
-            # and move i's node directly under the
-            # representative of this set
-            # (self.parent[x])
+            # Entonces recursivamente llamamos a Find con su padre y movemos el nodo de i directamente debajo del representante de este conjunto
         return self.parent[x]
 
-    # Do union of two sets represented
-    # by x and y.
+    # Unir dos sets
+    def union(self, x, y):
 
-    def Union(self, x, y):
-
-        # Find current sets of x and y
+        # Buscar los sets actuales de x y
         xset = self.find(x)
         yset = self.find(y)
 
-        # If they are already in same set
+        # Si estan en el mismo set
         if xset == yset:
             return
 
-        # Put smaller ranked item under
-        # bigger ranked item if ranks are
-        # different
+        # Poner el elemento con menor rank debajo del de mayor rank, si los ranks son diferentes
         if self.rank[xset] < self.rank[yset]:
             self.parent[xset] = yset
-
         elif self.rank[xset] > self.rank[yset]:
             self.parent[yset] = xset
-
-        # If ranks are same, then move y under
-        # x (doesn't matter which one goes where)
-        # and increment rank of x's tree
-        else:
+        else:  # Si los ranks son iguales, mover y debajo de x, e incrementar el rank del árbol de x
             self.parent[yset] = xset
             self.rank[xset] = self.rank[xset] + 1
 
-    def LeerInstrucciones(self, string):
+    # Leer instrucciones del archivo .in
+    def leer_instrucciones(self, string):
 
         string = string.split(" ")
 
@@ -63,43 +51,30 @@ class DisjSet:
         b = int(string[2].rstrip())
 
         if query == "3":
-            print(obj.find(a) == obj.find(b))
+            # Retorna True si ambos elementos pertenecen al mismo set
+            print(mi_set.find(a) == mi_set.find(b))
         elif query == "2":
             i = a
+            # Unir departamentos entre A y B
             while i <= b:
-                obj.Union(a, i)
+                mi_set.union(a, i)
                 i = i+1
         elif query == "1":
-            obj.Union(a, b)
+            # Unir departamentos A y B
+            mi_set.union(a, b)
 
 
-f = open("P1test9.in", "r")
-primera = f.readline()
-primera = primera.split(" ")
+# Leer archivo
+f = open("P1test1.in", "r")
+primera_linea = f.readline()
+primera_linea = primera_linea.split(" ")
 
-num_departamentos = int(primera[0])+1
-num_queries = primera[1]
+num_departamentos = int(primera_linea[0])+1
+num_queries = primera_linea[1]
 
-obj = DisjSet(num_departamentos)
+mi_set = DisjointSetUnion(num_departamentos)
 
 for x in f:
-    obj.LeerInstrucciones(str(x).replace("\t", " "))
+    mi_set.leer_instrucciones(str(x).replace("\t", " "))
 
 f.close()
-
-
-"""
-obj.Union(2, 5)
-obj.Union(4, 2)
-obj.Union(3, 1)
-
-# Ver si estan en el mismo set
-if obj.find(2) == obj.find(5):
-    ('Yes')
-else:
-    ('No')
-
-if obj.find(1) == obj.find(0):
-    ('Yes')
-else:
-    ('No')"""
