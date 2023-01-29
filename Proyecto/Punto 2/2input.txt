@@ -1,0 +1,11 @@
+10
+1 salsa
+1 sal
+1 sarten
+1 vino
+1 sol
+1 viento
+2 saltar
+2 ventisca
+2 cesta
+2 balon

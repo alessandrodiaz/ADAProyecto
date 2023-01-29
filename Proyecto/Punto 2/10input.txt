@@ -1,0 +1,17 @@
+16
+1 pera
+1 sastre
+1 camara
+1 rata
+1 caja
+1 cable
+1 tornillo
+1 ventilador
+1 bolso
+1 roca
+2 castillo
+2 cielo
+2 salir
+2 canal
+2 vender
+2 tornado

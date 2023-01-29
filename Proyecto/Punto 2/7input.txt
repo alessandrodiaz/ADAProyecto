@@ -1,0 +1,27 @@
+25
+1 vida
+1 saltar
+1 casa
+1 cazador
+1 escudo
+1 salud
+1 bienestar
+1 espejo
+1 lodo
+1 nodo 
+1 cajon
+1 lejos
+1 cerca
+1 asador
+1 viento
+2 lupa
+2 pendula
+2 vino
+2 vinilo
+2 tractor
+2 saltamontes
+2 caserio
+2 visa
+2 vista
+2 loto
+

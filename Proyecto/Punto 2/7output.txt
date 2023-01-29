@@ -1,0 +1,10 @@
+lejos
+cajon
+vida
+vida
+cajon
+saltar
+casa
+vida
+vida
+lodo

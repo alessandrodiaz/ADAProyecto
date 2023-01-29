@@ -1,0 +1,21 @@
+20
+1 animal
+1 ganso
+1 gala
+1 sopa
+1 soltar
+1 decimal
+1 decimos
+1 diente
+1 camino
+1 espada
+1 saltar
+1 soltar
+2 espuma
+2 hoja
+2 soldar
+2 soldado
+2 desconectar
+2 caminar
+2 espalda
+2 letras
