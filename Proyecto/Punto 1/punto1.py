@@ -64,7 +64,7 @@ class DisjointSetUnion:
 # Toma el archivo 1input.in y escribe en la salida .out
 # Ingresar el numero del test
 
-nombre_archivo = '1'
+nombre_archivo = '10'
 
 entrada = open(file=(Path(__file__).parent /
                '{}input.txt'.format(nombre_archivo)), mode="r", encoding='utf-8')
