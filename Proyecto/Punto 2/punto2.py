@@ -133,7 +133,7 @@ class Trie:
 # Toma el archivo .in y escribe en la salida .out
 PrefixTree = Trie()
 
-nombre_archivo = '6'
+nombre_archivo = '1'
 
 entrada = open(file=(Path(__file__).parent /
                '{}input.txt'.format(nombre_archivo)), mode="r", encoding='utf-8')
