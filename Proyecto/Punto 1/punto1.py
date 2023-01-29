@@ -1,4 +1,6 @@
 # PUNTO 1
+from pathlib import Path
+
 
 class DisjointSetUnion:
 
@@ -62,9 +64,10 @@ class DisjointSetUnion:
 
 # Poner nombre del archivo de lectura, sin la extension
 # Toma el archivo .in y escribe en la salida .out
-nombre_archivo = 'P1test1'
+nombre_archivo = '1'
 
-entrada = open(file='{}.in'.format(nombre_archivo), mode="r", encoding='utf-8')
+entrada = open(file=(Path(__file__).parent /
+               '{}input.txt'.format(nombre_archivo)), mode="r", encoding='utf-8')
 
 primera_linea = entrada.readline()
 primera_linea = primera_linea.split(" ")
@@ -73,8 +76,10 @@ num_departamentos = int(primera_linea[0])+1
 
 mi_set = DisjointSetUnion(num_departamentos)
 
-salida = open(file='{}.out'.format(nombre_archivo), mode="a", encoding='utf-8')
-salida = open(file='{}.out'.format(nombre_archivo), mode="w", encoding='utf-8')
+salida = open(file=(Path(__file__).parent /
+              '{}output.txt'.format(nombre_archivo)), mode="a", encoding='utf-8')
+salida = open(file=(Path(__file__).parent /
+              '{}output.txt'.format(nombre_archivo)), mode="w", encoding='utf-8')
 
 
 for x in entrada:
