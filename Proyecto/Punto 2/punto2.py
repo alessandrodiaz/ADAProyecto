@@ -6,7 +6,8 @@ class Nodo:
         self.sons = dict()
         self.end = False
 
-         #Elegir siguiente
+
+    #Elegir siguiente
     def elegir_siguiente(self):
 
         sons = self.sons
@@ -18,8 +19,9 @@ class Nodo:
             if sons[ l_s[i] ].words > eleccion.words:
                 eleccion = sons[ l_s[i] ]
             elif sons[ l_s[i] ].words == eleccion.words:
-                if sons[ l_s[i] ].letra == eleccion.letra:
+                if sons[ l_s[i] ].letra < eleccion.letra:
                     eleccion = sons[ l_s[i] ]
+                    
     
         return eleccion
 
@@ -124,7 +126,7 @@ class Trie:
 
 
     #Leer instrucciones
-    def leer_instrucciones(self, string):
+    def leer_instrucciones(self, string, out):
 
         string = string.split(" ")
 
@@ -132,20 +134,28 @@ class Trie:
         a = str(string[1].rstrip())
 
         if query == "1":
-            ob1.insertar(a)
+            self.insertar(a)
         else:
-            print (ob1.buscar_sugerencia(a))
+            out.write(str (self.buscar_sugerencia(a)).lower() + "\n")
+            print (self.buscar_sugerencia(a))
 
 
 #Leer archivo
-ob1 = Trie()
+PrefixTree = Trie()
 
-f = open("PruebaPrefix.in", "r")
-primera_linea = f.readline()
+nombre_archivo = 'P2test2'
+
+entrada = open(file='{}.in'.format(nombre_archivo), mode="r", encoding = 'utf-8')
+
+primera_linea = entrada.readline()
 primera_linea = primera_linea.split(" ")
 
-for x in f:
-    ob1.leer_instrucciones(str(x).replace("\t", " "))
+salida = open(file='{}.out'.format(nombre_archivo), mode="a", encoding = 'utf-8')
+salida = open(file='{}.out'.format(nombre_archivo), mode="w", encoding = 'utf-8')
 
-f.close()    
+for x in entrada:
+    PrefixTree.leer_instrucciones(str(x).replace("\t", " "), salida)
+
+entrada.close()
+salida.close()
 
