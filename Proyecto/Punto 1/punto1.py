@@ -10,7 +10,6 @@ class DisjointSetUnion:
         self.padre = [i for i in range(n)]
 
     # Encuentra el representante del set al que x pertenece
-    # Complejidad O(n)
     def find(self, x):
         if (self.padre[x] != x):
 
@@ -20,7 +19,6 @@ class DisjointSetUnion:
         return self.padre[x]
 
     # Unir dos sets
-    # Complejidad O(n)
     def union(self, x, y):
 
         # Buscar los sets actuales de x y
@@ -63,7 +61,9 @@ class DisjointSetUnion:
 
 
 # Poner nombre del archivo de lectura, sin la extension
-# Toma el archivo .in y escribe en la salida .out
+# Toma el archivo 1input.in y escribe en la salida .out
+# Ingresar el numero del test
+
 nombre_archivo = '1'
 
 entrada = open(file=(Path(__file__).parent /
