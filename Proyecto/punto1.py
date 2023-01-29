@@ -2,26 +2,23 @@
 
 class DisjointSetUnion:
 
-    # Constructor para crear e inicializar sets de n items
     def __init__(self, n):
 
         self.rank = [1] * n
-        self.parent = [i for i in range(n)]
+        self.padre = [i for i in range(n)]
 
-    # Encuentra el set de un x dado
-
+    # Encuentra el representante del set al que x pertenece
+    # Complejidad O(n)
     def find(self, x):
+        if (self.padre[x] != x):
 
-        # Encuentra el representante del set al que x pertenece
-        if (self.parent[x] != x):
-
-            # Si x no es el padre de él mismo, entonces x no es el representante de su set
-            self.parent[x] = self.find(self.parent[x])
-
-            # Entonces recursivamente llamamos a Find con su padre y movemos el nodo de i directamente debajo del representante de este conjunto
-        return self.parent[x]
+            # Si x no es el padre de él mismo, entonces no es el representante de su set
+            # Se hacen llamados recursivos
+            self.padre[x] = self.find(self.padre[x])
+        return self.padre[x]
 
     # Unir dos sets
+    # Complejidad O(n)
     def union(self, x, y):
 
         # Buscar los sets actuales de x y
@@ -32,13 +29,12 @@ class DisjointSetUnion:
         if xset == yset:
             return
 
-        # Poner el elemento con menor rank debajo del de mayor rank, si los ranks son diferentes
         if self.rank[xset] < self.rank[yset]:
-            self.parent[xset] = yset
+            self.padre[xset] = yset
         elif self.rank[xset] > self.rank[yset]:
-            self.parent[yset] = xset
-        else:  # Si los ranks son iguales, mover y debajo de x, e incrementar el rank del árbol de x
-            self.parent[yset] = xset
+            self.padre[yset] = xset
+        else:
+            self.padre[yset] = xset
             self.rank[xset] = self.rank[xset] + 1
 
     # Leer instrucciones del archivo .in
@@ -51,7 +47,7 @@ class DisjointSetUnion:
         b = int(string[2].rstrip())
 
         if query == "3":
-            # Retorna True si ambos elementos pertenecen al mismo set
+            # Retorna true si ambos elementos pertenecen al mismo set
             salida.write(str(mi_set.find(a) == mi_set.find(b)).lower()+"\n")
         elif query == "2":
             i = a
@@ -64,8 +60,9 @@ class DisjointSetUnion:
             mi_set.union(a, b)
 
 
-# Leer archivo
-nombre_archivo = 'P1test2'
+# Poner nombre del archivo de lectura, sin la extension
+# Toma el archivo .in y escribe en la salida .out
+nombre_archivo = 'P1test1'
 
 entrada = open(file='{}.in'.format(nombre_archivo), mode="r", encoding='utf-8')
 
@@ -73,7 +70,6 @@ primera_linea = entrada.readline()
 primera_linea = primera_linea.split(" ")
 
 num_departamentos = int(primera_linea[0])+1
-num_queries = primera_linea[1]
 
 mi_set = DisjointSetUnion(num_departamentos)
 
