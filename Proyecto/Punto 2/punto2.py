@@ -1,4 +1,6 @@
 # PUNTO 2
+from pathlib import Path
+
 
 class Nodo:
 
@@ -133,15 +135,18 @@ class Trie:
 # Toma el archivo .in y escribe en la salida .out
 PrefixTree = Trie()
 
-nombre_archivo = 'P2test2'
+nombre_archivo = '1'
 
-entrada = open(file='{}.in'.format(nombre_archivo), mode="r", encoding = 'utf-8')
+entrada = open(file=(Path(__file__).parent /
+               '{}input.txt'.format(nombre_archivo)), mode="r", encoding='utf-8')
 
 primera_linea = entrada.readline()
 primera_linea = primera_linea.split(" ")
 
-salida = open(file='{}.out'.format(nombre_archivo), mode="a", encoding = 'utf-8')
-salida = open(file='{}.out'.format(nombre_archivo), mode="w", encoding = 'utf-8')
+salida = open(file=(Path(__file__).parent /
+              '{}output.txt'.format(nombre_archivo)), mode="a", encoding='utf-8')
+salida = open(file=(Path(__file__).parent /
+              '{}output.txt'.format(nombre_archivo)), mode="w", encoding='utf-8')
 
 for x in entrada:
     PrefixTree.leer_instrucciones(str(x).replace("\t", " "), salida)
